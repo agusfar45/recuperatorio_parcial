@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador de Boletos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input, select, button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 8px;
+      font-size: 16px;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .radio-group label {
+      font-weight: normal;
+    }
+
+    .error {
+      color: red;
+    }
+
+    #fechaVueltaGroup {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Simulador de Costo de Boletos</h2>
+    <form id="formularioBoletos">
+      <label>Origen</label>
+      <input type="text" value="SLA - Salta" readonly />
+
+      <label>Destino</label>
+      <select id="destino" required>
+        <option value="">Seleccione destino</option>
+        <option value="COR">COR - Córdoba</option>
+        <option value="MDZ">MDZ - Mendoza</option>
+        <option value="BUE">BUE - Buenos Aires</option>
+      </select>
+
+      <label>Opción de Vuelo</label>
+      <div class="radio-group">
+        <label for="soloIda">Ida</label>
+        <input type="radio" name="opcionVuelo" id="soloIda" value="ida" checked />
+        
+        <label for="idaVuelta">Ida/Vuelta</label>
+        <input type="radio" name="opcionVuelo" id="idaVuelta" value="ida_vuelta" />
+        
+      </div>
+
+      <label>Fecha Ida</label>
+      <input type="date" id="fechaIda" required />
+
+      <div id="fechaVueltaGroup">
+        <label>Fecha Vuelta</label>
+        <input type="date" id="fechaVuelta" />
+      </div>
+
+      <label>Cantidad de Pasajeros</label>
+      <input type="number" id="pasajeros" min="1" required />
+
+      <button type="submit">Calcular Precio</button>
+    </form>
+
+    <p id="resultado"></p>
+    <p class="error" id="errorFecha"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
